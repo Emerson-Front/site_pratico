@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# Remove a barra "/" no final da URL, exceto para diretórios reais
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^(.+)/$
+RewriteRule ^ %1 [R=301,L]
+
+
+# Se não for um arquivo ou diretório existente, redireciona para index.php com parâmetros
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+Options -Indexes
