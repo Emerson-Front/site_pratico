@@ -52,6 +52,7 @@ ul li a {
 .social-icons a {
     color: #fff;
     margin: 0 10px;
+    text-decoration: none;
     transition: transform 0.3s;
 }
 

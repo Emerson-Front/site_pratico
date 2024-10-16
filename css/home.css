@@ -1,0 +1,103 @@
+.home {
+    text-align: center;
+    padding: 90px 0;
+    background: linear-gradient(135deg, #e0e0e0, #f9f9f9);
+}
+
+.home h1 {
+    font-size: 3rem;
+    color: #444;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.home h2 {
+    font-size: 1.75rem;
+    color: #888;
+    margin-bottom: 35px;
+    font-style: italic;
+}
+
+.home #projetos {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.home #projetos a {
+    width: 320px;
+    height: auto;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    text-decoration: none;
+}
+
+.home #projetos a:hover {
+    transform: translateY(-12px) scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.home #projetos a img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 15px;
+}
+
+.home #projetos h3 {
+    color: #222;
+    font-weight: 600;
+    margin: 20px 0 10px;
+    font-size: 1.4rem;
+}
+
+.home #projetos p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+
+
+/* Carregando */
+.loading-spinner {
+    margin: 20px auto;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    .home #projetos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .home {
+        padding: 70px 20px;
+    }
+}
