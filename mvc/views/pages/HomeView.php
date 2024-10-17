@@ -1,4 +1,4 @@
-<div class="home">
+<div class="page-home">
 
     <div class="centralizar">
 
