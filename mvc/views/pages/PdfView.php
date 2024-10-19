@@ -1,13 +1,29 @@
 <div class="page-pdf">
 
-    <h1>Página em obra!
-        <div class="gear"><i class="bi bi-gear-wide"></i></div>
+    <div class="centralizar">
+        <form method="get" target="__blank">
+            <div id="editor">
+                <!-- Conteúdo HTML -->
+            </div>
 
-    </h1>
-    <div class="striped"></div>
+            <!-- Campo oculto para o guardar o conteúdo -->
+            <input type="hidden" name="conteudo-pdf" id="conteudo">
 
-</div>
+            <button type="submit" name="url-pdf" value="pdf">Visualizar</button>
+        </form>
+    </div>
+
+    <!-- Inicia o Quill editor -->
+    <script>
+        const quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+
+        // Antes de enviar o formulário, transferir o conteúdo do editor para o input oculto
+        document.querySelector('form').onsubmit = function () {
+            document.querySelector('#conteudo').value = quill.root.innerHTML;
+        };
+    </script>
 
 
-
-
+</div> <!-- page-pdf -->

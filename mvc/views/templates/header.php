@@ -7,6 +7,8 @@
     <title> <?= $titulo ?> </title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="shortcut icon" href="mvc/views/imagens/icon/<?= $page ?>.ico" type="image/x-icon">
+    <?= $link ?>
+
 </head>
 
 <body>

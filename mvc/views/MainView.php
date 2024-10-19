@@ -11,7 +11,8 @@ class MainView
         define('PAGE', 'pages/' . ucfirst($page) . 'View.php');
         define('FOOTER', 'templates/footer.php');
 
-        $titulo = self::gerar_titulo($page);
+        $titulo = $page;
+        $link = self::biblioteca($page);
 
         require HEADER;
         require PAGE;
@@ -21,14 +22,62 @@ class MainView
 
     }
 
-    public static function gerar_titulo($page)
+    public static function biblioteca($page)
     {
+        # Biblioteca QUILL
+        define('QUILL_STYLE', '<link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />');
+        define('QUILL_BIBLIOTECA', '<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>');
+        define('QUILL', QUILL_STYLE . QUILL_BIBLIOTECA);
+
         switch ($page) {
             case 'pdf':
-                return 'Gerador de PDF';
+                return QUILL;
+
             default:
-                return 'Prático';
+                return;
         }
+
+    }
+
+    static function obra()
+    {
+
+        ?>
+        <style>
+            .obra {
+                margin-bottom: 50px;
+            }
+
+            .obra h1 {
+                display: flex;
+                justify-content: center;
+            }
+
+            .obra .gear {
+                margin-left: 10px;
+                border-radius: 50%;
+                animation: rodar 2.5s linear infinite;
+            }
+
+            @keyframes rodar {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+
+        <div class="obra">
+            <h1>Página em obra!
+                <div class="gear"><i class="bi bi-gear-wide"></i></div>
+
+            </h1>
+            <div class="striped"></div>
+        </div>
+        <?php
 
     }
 
