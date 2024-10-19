@@ -51,6 +51,7 @@ class MainView
             .obra h1 {
                 display: flex;
                 justify-content: center;
+                font-weight: 300;
             }
 
             .obra .gear {

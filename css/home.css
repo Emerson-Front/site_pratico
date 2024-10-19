@@ -6,6 +6,7 @@
 
 .page-home h1 {
     font-size: 3rem;
+    font-weight: 300;
     color: #444;
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -14,6 +15,7 @@
 
 .page-home h2 {
     font-size: 1.75rem;
+    font-weight: 300;
     color: #888;
     margin-bottom: 35px;
     font-style: italic;
@@ -54,6 +56,8 @@
 .page-home #projetos h3 {
     color: #222;
     font-weight: 600;
+    letter-spacing: 2px;
+    font-variant: small-caps;
     margin: 20px 0 10px;
     font-size: 1.4rem;
 }

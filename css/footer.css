@@ -5,82 +5,84 @@ footer {
     text-align: center;
     position: relative;
     overflow: hidden;
+    font-weight: 300;
 }
 
 
 
-.linha {
+footer .linha {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     margin-bottom: 40px;
 }
 
-.coluna {
+footer .coluna {
     flex: 1;
     min-width: 250px;
     margin: 20px;
 }
 
-h3 {
+footer h3 {
     color: #00ffe7;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 10px;
+    font-weight: 300;
 }
 
-p {
+footer p {
     line-height: 1.6;
     color: #b3b3b3;
 }
 
-ul {
+footer ul {
     list-style: none;
     padding: 0;
     color: #b3b3b3;
 }
 
-ul li a {
+footer ul li a {
     color: #fff;
     text-decoration: none;
 }
 
-.social-icons {
+footer .social-icons {
     font-size: 24px;
 }
 
-.social-icons a {
+footer .social-icons a {
     color: #fff;
     margin: 0 10px;
     text-decoration: none;
     transition: transform 0.3s;
 }
 
-.social-icons a:hover {
+footer .social-icons a:hover {
     transform: scale(1.2);
 }
 
-p {
+footer p {
     color: #969696;
     font-size: 15px;
 }
 
 /* Efeito de brilho animado */
-.glow-effect {
+footer .glow-effect {
     position: absolute;
     width: 300px;
     height: 300px;
     background: radial-gradient(circle, rgba(0, 255, 231, 0.4) 0%, rgba(0, 255, 231, 0) 70%);
 }
 
-.pulse-1 {
+footer .pulse-1 {
     top: -100px;
     left: -100px;
     animation: pulse 6s infinite;
     z-index: 0;
 }
 
-.pulse-2 {
+footer .pulse-2 {
     bottom: -100px;
     right: -100px;
     animation: pulse 6s infinite 3s;

@@ -23,8 +23,8 @@
                 <ul>
                     <li><a href="home">Início</a></li>
                     <li><a href="pdf">Gerador de PDF</a></li>
-                    <li><a href="#">Carregando...</a></li>
-                    <li><a href="#">Carregando...</a></li>
+                    <li><a href="#">Em breve mais funções...</a></li>
+
                 </ul>
             </nav>
         </div>

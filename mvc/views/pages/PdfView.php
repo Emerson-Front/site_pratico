@@ -1,5 +1,9 @@
 <div class="page-pdf">
 
+
+    <?= mvc\views\MainView::obra() ?>
+
+
     <div class="centralizar">
         <form method="get" target="__blank">
             <div id="editor">

@@ -5,6 +5,7 @@ header {
     color: white;
     text-align: center;
     position: relative;
+    font-weight: 300;
 }
 
 header .centralizar {
@@ -13,7 +14,7 @@ header .centralizar {
     align-items: center;
 }
 
-.logo a {
+header .logo a {
     font-size: 32px;
     color: #00ffe7;
     text-transform: uppercase;
@@ -24,12 +25,12 @@ header .centralizar {
     transition: color 0.3s;
 }
 
-.logo a:hover {
+header .logo a:hover {
     color: #ffffff;
     font-weight: 500;
 }
 
-.menu ul {
+header .menu ul {
     list-style: none;
     display: flex;
     gap: 30px;
@@ -37,7 +38,7 @@ header .centralizar {
     padding: 0;
 }
 
-.menu ul li a {
+header .menu ul li a {
     font-size: 18px;
     color: white;
     text-decoration: none;
@@ -46,7 +47,7 @@ header .centralizar {
     border-radius: 5px;
 }
 
-.menu ul li a:hover {
+header .menu ul li a:hover {
     background-color: #00ffe7;
     color: #1a1a1a;
 }
