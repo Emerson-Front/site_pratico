@@ -2,9 +2,7 @@
 
     <div class="centralizar">
 
-        <div id="preview">
-
-        </div>
+        <div id="preview"></div>
 
         <form method="post" target="__blank">
             <div id="editor">
@@ -14,12 +12,13 @@
             <!-- Campo oculto para o guardar o conteúdo -->
             <input type="hidden" name="conteudo-pdf" id="conteudo">
 
-            <button type="submit">Visualizar</button>
+            <button type="submit" class="btn">Visualizar</button>
         </form>
+
 
     </div>
 
-    
+
     <!-- Inicia o Quill editor -->
     <script>
         const quill = new Quill('#editor', {
