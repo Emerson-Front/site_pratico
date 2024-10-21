@@ -1,11 +1,12 @@
 <div class="page-pdf">
 
-
-    <?= mvc\views\MainView::obra() ?>
-
-
     <div class="centralizar">
-        <form method="get" target="__blank">
+
+        <div id="preview">
+
+        </div>
+
+        <form method="post" target="__blank">
             <div id="editor">
                 <!-- Conteúdo HTML -->
             </div>
@@ -13,10 +14,12 @@
             <!-- Campo oculto para o guardar o conteúdo -->
             <input type="hidden" name="conteudo-pdf" id="conteudo">
 
-            <button type="submit" name="url-pdf" value="pdf">Visualizar</button>
+            <button type="submit">Visualizar</button>
         </form>
+
     </div>
 
+    
     <!-- Inicia o Quill editor -->
     <script>
         const quill = new Quill('#editor', {
@@ -27,6 +30,12 @@
         document.querySelector('form').onsubmit = function () {
             document.querySelector('#conteudo').value = quill.root.innerHTML;
         };
+
+        quill.on('text-change', function () {
+            var conteudo = quill.root.innerHTML;
+            document.getElementById('preview').innerHTML = conteudo;
+        });
+
     </script>
 
 

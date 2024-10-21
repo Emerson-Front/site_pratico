@@ -6,3 +6,26 @@
 .ql-editor{
     min-height: 200px;
 }
+
+
+/* Preview --> */
+
+#preview {
+    text-align: initial;
+    width: 210mm;
+    /* A4 width */
+    height: 297mm;
+    /* A4 height */
+    border: 1px solid #000;
+    padding: 10mm;
+    background-color: white;
+    overflow: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+    scale: 0.5;
+    margin: -300px auto -250px;
+}
+
+
+
+/* <-- Preview */
