@@ -6,6 +6,8 @@ spl_autoload_register(function ($class) {
         return require 'core/App.php';
     }
 
+    $class = str_replace('\\', '/', $class);
+
     $arquivo = $class . '.php';
 
     if (file_exists($arquivo)) {

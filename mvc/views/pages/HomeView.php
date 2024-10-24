@@ -1,4 +1,4 @@
-<div class="home">
+<div class="page-home fonte-padrao">
 
     <div class="centralizar">
 
@@ -8,7 +8,7 @@
         <section id="projetos">
             <a href="pdf" class="pdf">
                 <img src="mvc/views/imagens/png_pdf.png" alt="Imagem em png do PDF">
-                <h3>Gerador de PDF</h3>
+                <h3>gerador de PDF</h3>
                 <p>Crie PDF de forma simples e prática</p>
             </a>
 

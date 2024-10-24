@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Site de Projetos</title>
+    <title> <?= $titulo ?> </title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="mvc/views/imagens/icon/<?= $page ?>.ico" type="image/x-icon">
+    <?= $link ?>
+
 </head>
 
 <body>
@@ -18,9 +21,10 @@
 
             <nav class="menu">
                 <ul>
+                    <li><a href="home">Início</a></li>
                     <li><a href="pdf">Gerador de PDF</a></li>
-                    <li><a href="#">Carregando...</a></li>
-                    <li><a href="#">Carregando...</a></li>
+                    <li><a href="#">Em breve mais funções...</a></li>
+
                 </ul>
             </nav>
         </div>
