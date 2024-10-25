@@ -60,3 +60,5 @@ $placeholder_Html = "<h1>Olá Mundo!</h1>";
 
     </div>
 </div> <!-- page-pdf -->
+
+<script src="js/page-pdf.js"></script>
