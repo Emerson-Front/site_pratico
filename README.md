@@ -29,6 +29,7 @@ Acesso:
     <li><strong>Bibliotecas/Frameworks</strong>:
         <ul>
             <li>Dompdf (geração de PDFs) - instalado via Composer</li>
+            <li>PHPWord (manipulação de documentos Word) - instalado via Composer</li>
             <li>Quill (editor WYSIWYG para formatação de texto)</li>
             <li>jQuery (manipulação de elementos e requisições dinâmicas)</li>
         </ul>

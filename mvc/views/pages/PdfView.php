@@ -58,5 +58,21 @@ $placeholder_Html = "<h1>Olá Mundo!</h1>";
 
         </div>
 
-    </div>
+        <section class="add-arquivo">
+
+            <form method="post" enctype="multipart/form-data" target="__blank">
+                <label>Adicione seu arquivo Word (formatos .doc ou .docx)</label>
+                <div class="input-group">
+                    <input type="file" name="arquivo-word" class="form-control" id="inputGroupFile04"
+                        aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept=".doc,.docx" required>
+                    <button class="btn btn-outline-secondary" name="btn-pdf3" type="submit"
+                        id="inputGroupFileAddon04">Enviar</button>
+                </div>
+            </form>
+
+        </section>
+
+    </div> <!-- Centralizar -->
 </div> <!-- page-pdf -->
+
+<script src="js/page-pdf.js"></script>

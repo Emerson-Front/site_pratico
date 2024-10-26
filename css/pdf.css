@@ -109,11 +109,27 @@
 }
 
 .page-pdf .btn-pdf1:hover,
-.page-pdf .btn-pdf2:hover {
+.page-pdf .btn-pdf2:hover,
+.page-pdf .btn-outline-secondary:hover {
     background: linear-gradient(135deg, #2575fc, #6a11cb);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
 }
+
+
+.page-pdf section.add-arquivo {
+    margin-top: 60px;
+}
+
+.page-pdf section.add-arquivo label {
+    font-size: 20px;
+}
+
+.page-pdf .btn-outline-secondary {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+}
+
 
 
 @media screen and (max-width: 1150px) {
