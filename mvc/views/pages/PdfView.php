@@ -18,28 +18,17 @@ $placeholder_Html = "<h1>Olá Mundo!</h1>";
             </div>
         </div>
 
-        <div style="display: none" id="file">
-
-            <p>Tem um modelo HTML pronto?</p>
-            <div class="input-group mb-3">
-                <input type="file" class="form-control" id="inputGroupFile02">
-                <label class="input-group-text" for="inputGroupFile02">Adicione arquivo HTML</label>
-                <pre id="fileContent"></pre>
-            </div>
-
-        </div>
 
         <div class="pdf-edit">
             <iframe id="preview"></iframe>
-
             <form method="post" target="__blank">
-
                 <div id="editor">
                     <!-- Conteúdo-->
                 </div>
                 <!-- Campo oculto para o guardar o conteúdo -->
                 <input type="hidden" name="conteudo-pdf" id="conteudo">
-                <button type="submit" class="btn-pdf1">Visualizar</button>
+                <button type="submit" class="btn-pdf1" name="btn-pdf1">Visualizar</button>
+
             </form>
 
             <!-- Modo HTML -->
@@ -54,6 +43,7 @@ $placeholder_Html = "<h1>Olá Mundo!</h1>";
 
                     <button type="submit" class="btn-pdf2" name="btn-pdf2">Visualizar</button>
                 </form>
+
             </div>
 
         </div>

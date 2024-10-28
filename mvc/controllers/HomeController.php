@@ -1,11 +1,11 @@
 <?php
 
-namespace mvc\controllers;
+namespace Mvc\controllers;
 
 class HomeController
 {
     public function index()
     {
-        \mvc\views\MainView::render('home');
+        \Mvc\views\MainView::render('home');
     }
 }

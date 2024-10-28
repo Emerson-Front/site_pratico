@@ -1,12 +1,13 @@
 <?php
 
-namespace mvc\views;
+namespace Mvc\views;
 
 class MainView
 {
 
     public static function render($page)
     {
+
         define('HEADER', 'templates/header.php');
         define('PAGE', 'pages/' . ucfirst($page) . 'View.php');
         define('FOOTER', 'templates/footer.php');
@@ -14,10 +15,19 @@ class MainView
         $titulo = $page;
         $link = self::biblioteca($page);
 
+        /**
+         * Verifica se a página atual é 'pdf' e se o botão para gerar o PDF foi pressionado.
+         * Nesse caso, evita a inclusão dos arquivos definidos acima para prevenir o erro
+         * "headers already sent", que pode ocorrer devido a qualquer saída enviada ao navegador
+         * antes da geração do PDF.
+         */
+        if ($page === 'pdf' && (isset($_POST['btn-pdf1']) || isset($_POST['btn-pdf2']) || isset($_POST['btn-pdf3']))) {
+            return;
+        }
+
         require HEADER;
         require PAGE;
         require FOOTER;
-
 
 
     }

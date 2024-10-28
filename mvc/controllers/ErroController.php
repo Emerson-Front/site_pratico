@@ -1,11 +1,11 @@
 <?php
 
-namespace mvc\controllers;
+namespace Mvc\controllers;
 
 class ErroController
 {
     public function index()
     {
-        \mvc\views\MainView::render('erro');
+        \Mvc\views\MainView::render('erro');
     }
 }
