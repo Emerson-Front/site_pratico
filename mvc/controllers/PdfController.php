@@ -22,7 +22,13 @@ class PdfController
         } elseif (isset($_POST['btn-pdf3'])) {
             if (isset($_FILES['arquivo-word'])) {
                 $arquivo = $_FILES['arquivo-word']['tmp_name'];
-                PdfModel::gerarPdfDoWord($arquivo);
+                $nome = $_FILES['arquivo-word']['name'];
+                $extensao = pathinfo($nome, PATHINFO_EXTENSION);
+                if ($extensao === 'docx' || $extensao === 'doc') {
+                    PdfModel::gerarPdfDoWord($arquivo);
+                } else {
+                    echo '<script>alert("Somente arquivos .doc e .docx!"); window.close();</script>';
+                }
             }
         }
     }

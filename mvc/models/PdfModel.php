@@ -13,7 +13,7 @@ class PdfModel
         $dompdf->loadHtml($conteudo);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
-        $dompdf->stream('meu_documento.pdf', ['Attachment' => 0]);
+        $dompdf->stream('documento', ['Attachment' => 0]);
     }
 
     public static function gerarPdfComEstilo($css, $html)
