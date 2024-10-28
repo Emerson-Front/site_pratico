@@ -1,9 +1,6 @@
 <?php
 
-include 'core/autoload.php';
+require 'composer/vendor/autoload.php';
 
-$app = new core\App;
+$app = new Core\App;
 $app->executar();
-
-
-
