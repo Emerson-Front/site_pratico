@@ -27,7 +27,7 @@
                 <ul>
                     <li><a href="home">Início</a></li>
                     <li><a href="pdf">Gerador de PDF</a></li>
-                    <li><a href="#">Em breve mais funções...</a></li>
+                    <li><a href="conversor">Conversor de Unidades</a></li>
                 </ul>
             </nav>
         </div>
