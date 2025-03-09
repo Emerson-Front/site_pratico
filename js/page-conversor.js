@@ -1,21 +1,47 @@
+medida_de_distancia();
+
+
 // Quando clicar em um cartao:
 $(".cartao").click(function () {
 
     $(".cartao").removeClass('card-selected');
 
+    // Limpa os <option> do <select> e inputs
+    $('#select_1, #select_2').html('<option>Selecione</option>');
+    $('#input_1, #input_2').val('');
+
+
+
     $(this).addClass('card-selected');
+    var cardId = $(this).attr('id');
     var texto = $(this).text();
     $('#section-conversor h3').text(texto);
 
+    switch (cardId) {
+        case 'medida':
+            medida_de_distancia();
+            break;
+        case 'peso':
+            peso();
+            break;
+        case 'temperatura':
+            temperatura();
+            break;
+        case 'volume':
+            volume();
+            break;
+        case 'moeda':
+            moeda();
+            break;
+        default:
+            break;
+    }
+
 });
 
+
+
 // Medida de distância
-
-medida_de_distancia();
-
-
-
-
 function medida_de_distancia() {
 
     var medidas = ['Centimetro', 'Metro', 'Quilômetro'];
@@ -35,10 +61,7 @@ function medida_de_distancia() {
         var option_1 = $('#select_1').val();
         var option_2 = $('#select_2').val();
 
-        if (option_1 === '' || option_2 === '') {
-            // Se os inputs for 'Selecione'
-            return;
-        } else if (option_1 === option_2) {
+        if (option_1 === option_2) {
             // Se os inputs forem iguais'
             $("#input_1, #input_2").on("input", function () {
                 let valor1 = $(this).val();
@@ -121,7 +144,7 @@ function medida_de_distancia() {
                     let valor2 = valor1 / 100000;
                     $('#input_1').val(valor2);
                 });
-                
+
                 // Quilometro & Metro
             } else if (option_2 === medidas[1]) {
                 $('#input_1').on('input', function () {
@@ -137,9 +160,6 @@ function medida_de_distancia() {
             }
 
         }
-
-        // Input_2
-
 
     });
 
