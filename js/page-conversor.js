@@ -1,16 +1,19 @@
 medida_de_distancia();
 
-
-// Quando clicar em um cartao:
-$(".cartao").click(function () {
+function reset() {
 
     $(".cartao").removeClass('card-selected');
 
     // Limpa os <option> do <select> e inputs
     $('#select_1, #select_2').html('<option>Selecione</option>');
     $('#input_1, #input_2').val('');
+}
 
 
+// Quando clicar em um cartao:
+
+$(".cartao").click(function () {
+    reset();
 
     $(this).addClass('card-selected');
     var cardId = $(this).attr('id');
@@ -21,20 +24,10 @@ $(".cartao").click(function () {
         case 'medida':
             medida_de_distancia();
             break;
-        case 'peso':
-            peso();
-            break;
-        case 'temperatura':
-            temperatura();
-            break;
-        case 'volume':
-            volume();
-            break;
-        case 'moeda':
-            moeda();
-            break;
+
         default:
-            break;
+            alert('Em Obra!');
+            location.reload();
     }
 
 });
@@ -170,18 +163,11 @@ function medida_de_distancia() {
 }
 
 
-
-
-
-
-
-
-
-
-
 function peso() {
 
 }
+
+
 
 function temperatura() {
 

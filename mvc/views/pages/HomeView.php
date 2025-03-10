@@ -19,10 +19,16 @@
                     diferentes sistemas de medidas.</p>
             </a>
 
-            <a href="#" class="carregando">
-                <div class="loading-spinner"> </div>
-                <p>Carregando o próximo...</p>
-            </a>           
+            <a href="conversor_numerico" class="conversor-numerico">
+                <img src="mvc/views/imagens/conversor-numerico.png" alt="Imagem em png do Conversor Numérico">
+                <h3>Conversor Numérico</h3>
+                <p>Converta números entre bases numéricas (Decimal, Binário, Octal e Hexadecimal) de forma simples e
+                    prática.</p>
+
+                <a href="#" class="carregando">
+                    <div class="loading-spinner"> </div>
+                    <p>Carregando o próximo...</p>
+                </a>
 
         </section>
 

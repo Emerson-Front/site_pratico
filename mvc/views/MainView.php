@@ -12,7 +12,7 @@ class MainView
         define('PAGE', 'pages/' . ucfirst($page) . 'View.php');
         define('FOOTER', 'templates/footer.php');
 
-        $titulo = $page;
+        $titulo = ucwords(str_replace(['_', '-'], ' ', $page));
         $link = self::biblioteca($page);
 
         /**

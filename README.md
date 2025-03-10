@@ -10,9 +10,10 @@ Acesso:
 
 <h2>Funcionalidades</h2>
 <ul>
-    <li>Gerador de PDF a partir de textos</li>
-    <li>Conversor de códigos para HTML e CSS</li>
-    <li>Pré-visualização do que será convertido</li>
+    <li>Gerador de PDF a partir de textos e HTML/CSS com pré-visualização</li>
+    <li>Conversor de unidades (medida)</li>
+    <li>Conversor de peso, temperatura, volume e moeda (em desenvolvimento)</li>
+    <li>Conversor numérico (decimal, binário, octal e hexadecimal)</li>
     <li>Outras ferramentas úteis serão adicionadas futuramente</li>
 </ul>
 

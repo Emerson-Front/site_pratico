@@ -12,6 +12,7 @@
                     <li><a href="home">Início</a></li>
                     <li><a href="pdf">Gerador de PDF</a></li>
                     <li><a href="conversor">Conversor de Unidades</a></li>
+                    <li><a href="conversor_numerico">Conversor Numérico</a></li>
                 </ul>
             </div>
             <div class="coluna">

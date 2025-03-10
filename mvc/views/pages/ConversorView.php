@@ -1,6 +1,5 @@
 <div class="page-conversor">
 
-
     <h2>Selecione uma unidade de medida:</h2>
 
     <section id="section-cartao">
@@ -10,22 +9,22 @@
             <p>Medida de distância</p>
         </div>
 
-        <div class="cartao">
+        <div class="cartao" id="peso">
             <img src="mvc/views/imagens/peso.png" alt="Imagem de um peso">
             <p>Peso</p>
         </div>
 
-        <div class="cartao">
+        <div class="cartao" id="temperatura">
             <img src="mvc/views/imagens/temperatura.png" alt="Imagem de termômetro">
             <p>Temperatura</p>
         </div>
 
-        <div class="cartao">
+        <div class="cartao" id="volume">
             <img src="mvc/views/imagens/volume.png" alt="Imagem de um galão">
             <p>Volume</p>
         </div>
 
-        <div class="cartao">
+        <div class="cartao" id="moeda">
             <img src="mvc/views/imagens/moeda.png" alt="Imagem de uma moeda">
             <p>Moeda</p>
         </div>
@@ -57,6 +56,6 @@
 
     </section>
 
-</div>
+</div> <!-- page-conversor -->
 
 <script src="js/page-conversor.js"></script>
