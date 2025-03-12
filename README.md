@@ -14,6 +14,7 @@ Acesso:
     <li>Conversor de unidades (medida)</li>
     <li>Conversor de peso, temperatura, volume e moeda (em desenvolvimento)</li>
     <li>Conversor numérico (decimal, binário, octal e hexadecimal)</li>
+    <li>Conversor de texto para binário e de binário para texto</li>
     <li>Outras ferramentas úteis serão adicionadas futuramente</li>
 </ul>
 
