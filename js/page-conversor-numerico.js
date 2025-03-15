@@ -160,3 +160,32 @@ function traduzir_texto_para_binario(texto) {
     // 3. Juntar os números binários em uma única string
     return binario.join(' ');
 }
+
+
+
+// style
+function getRandomColor() {
+    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
+
+function changeBorderColor() {
+    let color1 = getRandomColor();
+    let color2 = getRandomColor();
+    let color3 = getRandomColor();
+    let color4 = getRandomColor();
+    let deg = Math.floor(Math.random() * 361);
+    let element = document.querySelector(".content-wrapper");
+
+
+    element.style.transition = "0.7s";
+    element.style.boxShadow = `
+    0 -15px 10px ${color1},       /* Sombra superior */
+    15px 0 10px ${color2},        /* Sombra direita */
+    0 15px 10px ${color3},        /* Sombra inferior */
+    -15px 0 10px ${color4}        /* Sombra esquerda */
+`;
+    element.style.borderImageSource = `linear-gradient(${deg}deg, ${color1}, ${color2}, ${color3}, ${color4})`;
+
+}
+
+setInterval(changeBorderColor, 3000);
