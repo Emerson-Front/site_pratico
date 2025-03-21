@@ -18,8 +18,9 @@ export default class App {
             const controller = new (await import(`../${arquivo}`)).default();
             controller.index();
 
-        } catch {
-            window.location.href = 'erro';
+        } catch (error) {
+            console.log('Erro ao carregar o controller', error);
+            window.location.href = '/erro';
         }
 
     }

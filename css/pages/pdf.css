@@ -5,44 +5,293 @@
     font-family: "Raleway", sans-serif;
 }
 
-.page-pdf .mode-switch {
-    display: flex;
-    justify-content: center;
-    flex-direction: row-reverse;
+/* Galeria de Imagens */
+.page-pdf .galeria-imagens {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
 }
 
+.page-pdf .cabecalho-galeria {
+    padding: 20px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.page-pdf .titulo-galeria {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.page-pdf .titulo-galeria i {
+    font-size: 24px;
+    color: #6a11cb;
+}
+
+.page-pdf .titulo-galeria h4 {
+    color: #333;
+    font-size: 20px;
+}
+
+.page-pdf .acoes-galeria {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.page-pdf .area-upload {
+    flex: 2;
+    min-width: 300px;
+    padding: 15px;
+    background: #f8f9fa;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.page-pdf .area-upload:hover {
+    border-color: #6a11cb;
+    background: #f0f0f0;
+}
+
+.page-pdf .area-upload i {
+    font-size: 24px;
+    color: #6a11cb;
+}
+
+.page-pdf .area-upload span {
+    font-size: 14px;
+    color: #666;
+}
+
+.page-pdf .area-upload small {
+    font-size: 12px;
+    color: #999;
+}
+
+/* Grade de Imagens */
+.page-pdf .grade-imagens {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.page-pdf .cartao-imagem {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    width: 250px;
+    height: 200px;
+}
+
+.page-pdf .cartao-imagem:hover {
+    transform: translateY(-5px);
+}
+
+.page-pdf .previa-cartao {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+
+.page-pdf .previa-cartao img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.page-pdf .sobreposicao-cartao {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.page-pdf .cartao-imagem:hover .sobreposicao-cartao {
+    opacity: 1;
+}
+
+.page-pdf .ferramentas-cartao {
+    display: flex;
+    gap: 15px;
+}
+
+.page-pdf .botao-ferramenta {
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.page-pdf .botao-ferramenta:hover {
+    transform: scale(1.1);
+}
+
+.page-pdf .botao-copiar:hover {
+    background: #0d6efd;
+    color: white;
+}
+
+.page-pdf .botao-excluir:hover {
+    background: #dc3545;
+    color: white;
+}
+
+.page-pdf .info-cartao {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+}
+
+.page-pdf .nome-arquivo {
+    font-size: 12px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.page-pdf .tamanho-arquivo {
+    font-size: 11px;
+    color: #666;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .page-pdf .acoes-galeria {
+        flex-direction: column;
+    }
+
+    .page-pdf .campo-busca,
+    .page-pdf .area-upload {
+        width: 100%;
+    }
+
+    .page-pdf .grade-imagens {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .page-pdf .botao-ferramenta {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Resto do CSS existente */
 .page-pdf .pdf-edit {
     display: flex;
     align-items: end;
     justify-content: end;
 }
 
-.ql-editor {
-    width: 700px;
-    min-height: 595px;
-    background: white;
+.page-pdf .uploud-imgens .bi-plus-circle {
+    font-size: 40px;
+    cursor: pointer;
+    box-shadow: 0 0 100px rgba(0, 0, 0, );
+    border-radius: 50%;
+    padding: 0 3px;
+    transition: 0.3s;
 }
 
-.ql-toolbar.ql-snow {
-    background: linear-gradient(45deg, #4a484d, #333131);
-
+.page-pdf .uploud-imgens .bi-plus-circle:hover {
+    background: #353535;
+    color: white;
 }
 
-.page-pdf .ql-snow .ql-picker {
-    color: rgb(0, 0, 0);
+.page-pdf .uploud-imgens span {
+    color: #353535;
+    font-size: 12px;
+    font-style: italic;
 }
 
-.ql-snow .ql-picker-label::before {
-    color: #fff;
+.page-pdf .mini-imagens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 2px 0;
+    justify-content: center;
 }
 
-.page-pdf .ql-snow .ql-stroke {
-    stroke: #fff;
+.page-pdf .mini-img {
+    position: relative;
 }
 
+.page-pdf .mini-img img {
+    max-width: 150px;
+    height: 100px;
+    transition: 0.3s;
+}
 
-/* Modo HTML | CSS*/
-.page-pdf .modo-html,
+.page-pdf .mini-img img:hover {
+    scale: 1.05;
+    box-shadow: 0 0 10px rgb(0, 57, 95);
+    opacity: 0.8;
+}
+
+.page-pdf .mini-img .bi-copy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    z-index: 10;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    margin: auto;
+}
+
+.page-pdf .mini-img .bi-copy:hover {
+    scale: 1.05;
+}
+
+.page-pdf .mini-img .bi-trash {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    color: red;
+}
+
+.page-pdf .mini-img .bi-trash:hover {
+    scale: 1.05;
+}
+
+/* editor HTML | CSS*/
+.page-pdf .editor-html,
 .page-pdf .codigo-css,
 .page-pdf .codigo-html {
     min-width: 700px;
@@ -72,13 +321,8 @@
     overflow: auto;
 }
 
-
-
-
 /* Preview --> */
-
-#preview {
-
+.page-pdf #preview {
     text-align: initial;
     width: 237mm;
     height: 338mm;
@@ -94,10 +338,7 @@
 
 /* <-- Preview */
 
-
-
-.page-pdf .btn-pdf1,
-.page-pdf .btn-pdf2 {
+.page-pdf .btn-pdf {
     background: linear-gradient(135deg, #6a11cb, #2575fc);
     color: white;
     margin-top: 10px;
@@ -110,14 +351,12 @@
     transition: 0.3s;
 }
 
-.page-pdf .btn-pdf1:hover,
-.page-pdf .btn-pdf2:hover,
+.page-pdf .btn-pdf:hover,
 .page-pdf .btn-outline-secondary:hover {
     background: linear-gradient(135deg, #2575fc, #6a11cb);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
 }
-
 
 .page-pdf section.add-arquivo {
     margin-top: 60px;
@@ -132,8 +371,6 @@
     color: white;
 }
 
-
-
 @media screen and (max-width: 1150px) {
     .page-pdf .pdf-edit {
         flex-direction: column;
@@ -141,28 +378,25 @@
         margin-top: 70px;
     }
 
-    #preview {
+    .page-pdf #preview {
         margin-top: -350px;
     }
-
 }
 
-
 @media screen and (max-width: 768px) {
-    #preview {
+    .page-pdf #preview {
         scale: 0.3;
         margin: -490px 0 -440px 0;
     }
 
-    .ql-editor {
+    .page-pdf .ql-editor {
         width: 100%;
     }
 
-    .page-pdf .modo-html,
+    .page-pdf .editor-html,
     .page-pdf .codigo-css,
     .page-pdf .codigo-html {
         min-width: 0;
         width: 99%;
     }
-
 }
