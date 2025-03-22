@@ -61,68 +61,102 @@ export default class pdfController {
         // Upload de imagens
         let contador = 0;
         let urlMapping = {};
+        this.upload_imagens(contador, urlMapping);
+        this.arrastar_e_soltar(contador, urlMapping);
+
+    }
+
+
+    // Upload de imagens com input
+    upload_imagens(contador, urlMapping) {
         document.getElementById('upload-img').addEventListener('change', function () {
-            let file = this.files[0];
-            let reader = new FileReader();
+            const file = this.files[0];
+            if (!file || !file.type.startsWith('image/')) return;
 
+            const reader = new FileReader();
             const div_pai = document.querySelector('.grade-imagens');
-            let imgId = `img-${contador}`;
-            contador++;
+            const imgId = `img-${contador}`;
+            contador++; // Incrementa o contador usando referência
 
-            let cartao = document.createElement('div');
+            const cartao = document.createElement('div');
             cartao.classList.add('cartao-imagem');
             cartao.innerHTML = `
-                    <div class="previa-cartao">
-                        <img id="${imgId}">
-                        <div class="sobreposicao-cartao">
-                            <div class="ferramentas-cartao">
-                                <button class="botao-ferramenta botao-copiar" title="Copiar URL">
-                                    <i class="bi bi-link-45deg"></i>
-                                </button>
-                                <button class="botao-ferramenta botao-excluir" title="Excluir" onclick="remover_img(this)">
-                                    <i class="bi bi-trash3"></i>
-                                </button>
-                            </div>
-                        </div>
+            <div class="previa-cartao">
+                <img id="${imgId}">
+                <div class="sobreposicao-cartao">
+                    <div class="ferramentas-cartao">
+                        <button class="botao-ferramenta botao-copiar" title="Copiar URL">
+                            <i class="bi bi-link-45deg"></i>
+                        </button>
+                        <button class="botao-ferramenta botao-excluir" title="Excluir">
+                            <i class="bi bi-trash3"></i>
+                        </button>
                     </div>
-            `;
+                </div>
+            </div>
+        `;
             div_pai.appendChild(cartao);
 
-            // Função para copiar a URL da imagem
-            cartao.querySelector('.botao-copiar').onclick = function () {
-                navigator.clipboard.writeText();
-            }
+            // Configurar eventos de cópia e exclusão
+            cartao.querySelector('.botao-copiar').onclick = () => {
+                navigator.clipboard.writeText(imgId);
+                $(cartao).find('.botao-copiar').html('<i class="bi bi-check-circle"></i>').css('background-color', 'green');
+                setTimeout(() => {
+                    $(cartao).find('.botao-copiar').html('<i class="bi bi-link-45deg"></i>').css('background-color', '');
+                }, 2000);
+            };
 
-            // Função para carregar a imagem e a aicionar base64 e urlMapping
-            reader.onload = function () {
-                let base64 = reader.result;
+            cartao.querySelector('.botao-excluir').onclick = () => cartao.remove();
+
+            // Carregar imagem e mapear URL
+            reader.onload = () => {
+                const base64 = reader.result;
                 document.getElementById(imgId).src = base64;
                 urlMapping[imgId] = base64;
             };
-
-
-            // Função para remover o cartão
-            cartao.querySelector('.botao-excluir').onclick = function () {
-                cartao.remove();
-            }
-
-
-            // Função para copiar a "URL" da imagem que é o id da imagem no dicionario urlMapping
-            cartao.querySelector('.botao-copiar').onclick = function () {
-                let id = imgId;
-                navigator.clipboard.writeText(id);
-
-                // Estilo do botão quando copia a "URL"
-                $('.botao-copiar').html('<i class="bi bi-check-circle"></i>').css('background-color', 'green');
-                setTimeout(() => {
-                    $('.botao-copiar').html('<i class="bi bi-link-45deg"></i>').css('background-color', '');
-                }, 2000);
-            }
-
             reader.readAsDataURL(file);
+        });
+    }
 
+    // Eventos de drag and drop
+    arrastar_e_soltar(contador, urlMapping) {
+        const area_upload = document.querySelector('.area-upload');
+
+        // Prevenir comportamentos padrão
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(evento => {
+            area_upload.addEventListener(evento, e => {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        });
+        // Efeito visual ao arrastar
+        ['dragenter', 'dragover'].forEach(evento => {
+            area_upload.addEventListener(evento, () => area_upload.classList.add('highlight'));
+        });
+        
+        ['dragleave', 'drop'].forEach(evento => {
+            area_upload.addEventListener(evento, () => area_upload.classList.remove('highlight'));
         });
 
+        // Ao soltar arquivo
+        area_upload.addEventListener('drop', e => {
+            const files = e.dataTransfer.files;
+            const input = document.getElementById('upload-img');
+
+            if (files.length > 0) {
+                const file = files[0];
+                if (file.type.startsWith('image/')) {
+                    // Atualizar o input e disparar o evento 'change'
+                    const dataTransfer = new DataTransfer();
+                    dataTransfer.items.add(file);
+                    input.files = dataTransfer.files;
+                    const event = new Event('change');
+                    input.dispatchEvent(event);
+                } else {
+                    alert('Por favor, solte apenas arquivos de imagem.');
+                }
+            }
+        });
     }
 
 }
