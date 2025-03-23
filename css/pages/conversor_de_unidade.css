@@ -1,67 +1,906 @@
-.page-conversor {
-    padding: 50px 0;
-    min-height: 60vh;
-    background: linear-gradient(145deg, rgb(227, 250, 255), rgb(247, 253, 255));
-    font-family: "Raleway", sans-serif;
+/* Importando fontes */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600&display=swap');
+
+/* Reset e variáveis */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+:root {
+    --bg-color: #0f1923;
+    --primary: #ff2a6d;
+    --secondary: #05d9e8;
+    --accent: #ff2a6d;
+    --text: #d1f7ff;
+    --card-bg: rgba(5, 217, 232, 0.05);
+}
+
+/* Estilo base */
+.page-conversor {
+    min-height: 100vh;
+    background: var(--bg-color);
+    background-image:
+        linear-gradient(45deg, rgba(255, 42, 109, 0.05) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(5, 217, 232, 0.05) 25%, transparent 25%);
+    background-size: 4px 4px;
+    font-family: 'Chakra Petch', sans-serif;
+    padding: 2rem;
+    color: var(--text);
+    position: relative;
+}
+
+.page-conversor::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+/* Título principal */
 .page-conversor h2 {
     text-align: center;
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 2rem 0;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px var(--primary),
+        -2px -2px var(--secondary);
 }
 
-.page-conversor img {
-    max-width: 80px;
+/* Seção de cartões */
+#section-cartao {
+    max-width: 1200px;
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
 }
 
-.page-conversor #section-cartao {
-    margin: 50px;
+.cartao {
+    background: var(--card-bg);
+    border: 2px solid var(--secondary);
+    border-radius: 5px;
+    padding: 2rem;
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-
-}
-
-.page-conversor #section-cartao .cartao {
-    padding: 20px;
-    justify-items: center;
-    transition: 0.3s;
-}
-
-.page-conversor #section-cartao .cartao:hover {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
     cursor: pointer;
-    border-radius: 30px;
-    box-shadow: 0px 5px 7px 0px rgb(100, 104, 155);
-    scale: 1.2;
-
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.page-conversor #section-conversor {
-    text-align: center;
-    background: white;
-    box-shadow: 5px 5px 12px 0px #000;
-    border-radius: 20px;
-    padding: 50px 0;
+.cartao::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(45deg, transparent, rgba(5, 217, 232, 0.2), transparent);
+    transition: all 0.5s ease;
+}
+
+.cartao:hover::before {
+    top: -50%;
+    left: -50%;
+}
+
+.cartao img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px var(--secondary));
+    transition: all 0.3s ease;
+}
+
+.cartao:hover img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px var(--secondary));
+}
+
+.cartao p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Seção do conversor */
+#section-conversor {
     max-width: 900px;
-    margin: auto;
+    margin: 3rem auto;
+    background: var(--card-bg);
+    border: 2px solid var(--secondary);
+    padding: 2.5rem;
+    border-radius: 5px;
+    position: relative;
 }
 
-.page-conversor #section-conversor .box {
+#section-conversor::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg,
+            transparent 0%,
+            rgba(5, 217, 232, 0.1) 50%,
+            transparent 100%);
+    pointer-events: none;
+}
+
+#section-conversor h3 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.box {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
-.page-conversor #section-conversor .parte {
-    display: grid;
+.parte {
+    flex: 1;
+    min-width: 280px;
 }
 
-.page-conversor #section-conversor input {
-    text-align: center;
+/* Inputs e Selects estilizados */
+input,
+select {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(15, 25, 35, 0.8);
+    border: 2px solid var(--secondary);
+    border-radius: 5px;
+    color: var(--text);
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(255, 42, 109, 0.3);
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2305d9e8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 3rem;
+}
+
+/* Cartão selecionado */
+.card-selected {
+    background: rgba(255, 42, 109, 0.1);
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(255, 42, 109, 0.2);
+}
+
+/* Animações */
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.cartao:hover p {
+    animation: none;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cartao {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.cartao:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.cartao:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.cartao:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.cartao:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* Efeitos de hover refinados */
+input:hover,
+select:hover {
+    background: #2f3f50;
+}
+
+/* Estilo para placeholder */
+input::placeholder {
+    color: rgba(209, 247, 255, 0.5);
+}
+
+/* Estilo para opções do select */
+select option {
+    background: var(--bg-color);
+    color: var(--text);
+}
+
+/* Feedback visual para valores válidos */
+input:valid {
+    border-color: var(--success);
+}
+
+/* Efeito de pulso suave no card selecionado */
+@keyframes softPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .card-selected {
-    background: white;
-    border-radius: 30px;
-    box-shadow: 0px 5px 7px 0px rgb(100, 104, 155);
-    scale: 1.2;
+    animation: softPulse 2s infinite;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .page-conversor {
+        padding: 1rem;
+    }
+
+    .page-conversor h2 {
+        font-size: 2rem;
+    }
+
+    #section-conversor {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+    }
+
+    .box {
+        flex-direction: column;
+    }
+
+    .box span {
+        transform: rotate(90deg);
+    }
+}
+
+/* Animações específicas para cada cartão */
+#medida {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(135deg,
+            rgba(5, 217, 232, 0.05) 0%,
+            rgba(255, 42, 109, 0.05) 100%);
+}
+
+#medida::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(5, 217, 232, 0.2) 25%,
+            rgba(255, 42, 109, 0.2) 50%,
+            rgba(5, 217, 232, 0.2) 75%,
+            transparent 100%);
+    transform: translateX(-100%);
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#medida:hover::before {
+    opacity: 1;
+    animation: scannerEffect 2s linear infinite;
+}
+
+#medida .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(0deg, transparent 24%,
+            rgba(5, 217, 232, 0.1) 25%,
+            rgba(5, 217, 232, 0.1) 26%,
+            transparent 27%, transparent 74%,
+            rgba(5, 217, 232, 0.1) 75%,
+            rgba(5, 217, 232, 0.1) 76%,
+            transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%,
+            rgba(5, 217, 232, 0.1) 25%,
+            rgba(5, 217, 232, 0.1) 26%,
+            transparent 27%, transparent 74%,
+            rgba(5, 217, 232, 0.1) 75%,
+            rgba(5, 217, 232, 0.1) 76%,
+            transparent 77%, transparent);
+    background-size: 30px 30px;
+    opacity: 0;
+    z-index: 1;
+}
+
+#medida:hover .grid {
+    opacity: 1;
+    animation: gridPulse 2s ease-in-out infinite;
+}
+
+#medida .hologram {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+#medida:hover .hologram::before,
+#medida:hover .hologram::after {
+    content: '📊';
+    position: absolute;
+    font-size: 1.5em;
+    opacity: 0;
+    filter: drop-shadow(0 0 5px var(--secondary));
+}
+
+#medida:hover .hologram::before {
+    left: 20%;
+    top: 30%;
+    animation: hologramFloat 3s ease-in-out infinite;
+}
+
+#medida:hover .hologram::after {
+    right: 20%;
+    bottom: 30%;
+    animation: hologramFloat 3s ease-in-out infinite 1.5s;
+}
+
+#medida .scan-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--secondary),
+            var(--primary),
+            var(--secondary),
+            transparent);
+    top: 0;
+    opacity: 0;
+    z-index: 3;
+}
+
+#medida:hover .scan-line {
+    opacity: 1;
+    animation: scanLine 2s linear infinite;
+}
+
+#medida p {
+    position: relative;
+    z-index: 4;
+}
+
+#medida:hover p {
+    animation: glitchText 2s linear infinite;
+    color: var(--text);
+    text-shadow:
+        2px 2px var(--primary),
+        -2px -2px var(--secondary);
+    letter-spacing: 3px;
+}
+
+#medida:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 5px 20px rgba(5, 217, 232, 0.3),
+        0 0 40px rgba(255, 42, 109, 0.2),
+        inset 0 0 15px rgba(5, 217, 232, 0.2);
+    border-image: linear-gradient(45deg, var(--secondary), var(--primary)) 1;
+    border-width: 2px;
+    border-style: solid;
+}
+
+@keyframes scannerEffect {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes gridPulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.02);
+    }
+}
+
+@keyframes hologramFloat {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translateY(0) rotate(0deg) scale(1);
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translateY(-10px) rotate(5deg) scale(1.1);
+        filter: hue-rotate(180deg);
+    }
+}
+
+@keyframes scanLine {
+    0% {
+        top: 0%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes glitchText {
+
+    0%,
+    100% {
+        transform: translateX(0) skewX(0deg);
+        filter: hue-rotate(0deg);
+    }
+
+    20% {
+        transform: translateX(-2px) skewX(10deg);
+        filter: hue-rotate(90deg);
+    }
+
+    40% {
+        transform: translateX(2px) skewX(-10deg);
+        filter: hue-rotate(180deg);
+    }
+
+    60% {
+        transform: translateX(-2px) skewX(10deg);
+        filter: hue-rotate(270deg);
+    }
+
+    80% {
+        transform: translateX(2px) skewX(-10deg);
+        filter: hue-rotate(360deg);
+    }
+}
+
+#temperatura:hover p {
+    animation: queimar 1s ease infinite;
+    text-shadow:
+        0 0 10px #ff4d00,
+        0 0 20px #ff8800,
+        0 0 30px #ffa500,
+        0 0 40px #ff6b00,
+        0 0 50px #ff4500,
+        0 0 60px #ff3300;
+    color: #ff4500;
+    font-weight: 800;
+    transform-origin: center;
+    animation: queimar 1s ease infinite, pulsar 0.5s ease-in-out infinite;
+}
+
+#peso p {
+    position: relative;
+    transform-origin: center -20px;
+}
+
+#peso:hover p {
+    animation:
+        conjunto-pendulo 3s cubic-bezier(0.45, 0, 0.55, 1) infinite,
+        pulso-suave 3s ease-in-out infinite;
+    color: #ffd700;
+    text-shadow:
+        2px 2px 0 #b8860b,
+        3px 3px 0 #8b6914,
+        4px 4px 0 #654321;
+    font-weight: 800;
+    -webkit-text-stroke: 1px #8b6914;
+    padding-top: 25px;
+}
+
+#peso:hover p::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 3px;
+    height: 40px;
+    background: linear-gradient(90deg,
+            #ffd700,
+            #b8860b,
+            #ffd700);
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(184, 134, 11, 0.3);
+    transform: translateX(-50%);
+}
+
+@keyframes conjunto-pendulo {
+    0% {
+        transform: rotate(15deg);
+    }
+
+    25% {
+        transform: rotate(-15deg);
+    }
+
+    50% {
+        transform: rotate(15deg);
+    }
+
+    75% {
+        transform: rotate(-15deg);
+    }
+
+    100% {
+        transform: rotate(15deg);
+    }
+}
+
+@keyframes pulso-suave {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(15deg);
+    }
+
+    25% {
+        transform: scale(1.5) rotate(-15deg);
+    }
+
+    50% {
+        transform: scale(1) rotate(15deg);
+    }
+
+    75% {
+        transform: scale(1.5) rotate(-15deg);
+    }
+}
+
+/* Animação de fogo para temperatura */
+@keyframes queimar {
+    0% {
+        transform: translateY(0) scale(1);
+        text-shadow:
+            0 0 5px #ff4500,
+            0 0 10px #ff6b00,
+            0 0 15px #ff8800,
+            0 0 20px #ffa500,
+            0 0 25px #ff4d00,
+            0 0 30px #ff4500;
+        filter: brightness(1) contrast(1);
+    }
+
+    25% {
+        transform: translateY(-2px) scale(1.02);
+        text-shadow:
+            0 0 10px #ff6b00,
+            0 0 20px #ff8800,
+            0 0 30px #ffa500,
+            0 0 40px #ff4d00,
+            0 0 50px #ff4500,
+            0 0 60px #ff6b00;
+        filter: brightness(1.2) contrast(1.2);
+    }
+
+    50% {
+        transform: translateY(-5px) scale(1.05);
+        text-shadow:
+            0 0 15px #ff8800,
+            0 0 30px #ffa500,
+            0 0 45px #ff4d00,
+            0 0 60px #ff4500,
+            0 0 75px #ff6b00,
+            0 0 90px #ff8800;
+        filter: brightness(1.5) contrast(1.5);
+    }
+
+    75% {
+        transform: translateY(-2px) scale(1.02);
+        text-shadow:
+            0 0 10px #ff6b00,
+            0 0 20px #ff8800,
+            0 0 30px #ffa500,
+            0 0 40px #ff4d00,
+            0 0 50px #ff4500,
+            0 0 60px #ff6b00;
+        filter: brightness(1.2) contrast(1.2);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        text-shadow:
+            0 0 5px #ff4500,
+            0 0 10px #ff6b00,
+            0 0 15px #ff8800,
+            0 0 20px #ffa500,
+            0 0 25px #ff4d00,
+            0 0 30px #ff4500;
+        filter: brightness(1) contrast(1);
+    }
+}
+
+.temperatura:hover p::before {
+    content: '🔥';
+    position: absolute;
+    left: -25px;
+    animation: chama 0.5s infinite;
+    filter: drop-shadow(0 0 5px #ff4d00) brightness(1.2);
+    transform-origin: bottom;
+}
+
+.temperatura:hover p::after {
+    content: '🔥';
+    position: absolute;
+    right: -25px;
+    animation: chama 0.5s infinite 0.2s;
+    filter: drop-shadow(0 0 5px #ff8800) brightness(1.2);
+    transform-origin: bottom;
+}
+
+.temperatura:hover p::before,
+.temperatura:hover p::after {
+    font-size: 1.8em;
+}
+
+@keyframes chama {
+
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: scale(1) rotate(-5deg) translateY(0) skewX(-2deg);
+    }
+
+    25% {
+        opacity: 1;
+        transform: scale(1.2) rotate(5deg) translateY(-3px) skewX(2deg);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1) rotate(-5deg) translateY(0) skewX(-2deg);
+    }
+
+    75% {
+        opacity: 1;
+        transform: scale(1.3) rotate(5deg) translateY(-5px) skewX(2deg);
+    }
+}
+
+@keyframes pulsar {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+#volume {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+#volume .bolhas {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#volume .bolhas::before,
+#volume .bolhas::after,
+#volume .bolhas span::before,
+#volume .bolhas span::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+}
+
+#volume:hover .bolhas::before {
+    left: 10%;
+    width: 15px;
+    height: 15px;
+    animation: subir 3s ease-in infinite 0.2s;
+}
+
+#volume:hover .bolhas::after {
+    left: 30%;
+    width: 10px;
+    height: 10px;
+    animation: subir 2.5s ease-in infinite 0.8s;
+}
+
+#volume:hover .bolhas span::before {
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    animation: subir 2.8s ease-in infinite 0.4s;
+}
+
+#volume:hover .bolhas span::after {
+    left: 70%;
+    width: 8px;
+    height: 8px;
+    animation: subir 2.2s ease-in infinite 1s;
+}
+
+#volume:hover {
+    box-shadow: 0 0 20px rgba(3, 150, 255, 0.3);
+}
+
+#volume::before {
+    content: '';
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg,
+            rgba(3, 150, 255, 0.4),
+            rgba(3, 150, 255, 0.2),
+            rgba(3, 150, 255, 0.1),
+            transparent);
+    transition: all 0.5s ease;
+    z-index: 0;
+}
+
+#volume:hover::before {
+    bottom: 0;
+    animation: ondular 2s ease-in-out infinite;
+}
+
+#volume::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
+    transform: skewX(-15deg);
+    transition: all 0.5s ease;
+}
+
+#volume:hover::after {
+    left: 150%;
+    transition: all 0.8s ease;
+}
+
+#volume p {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+#volume:hover p {
+    transform: scale(1.2);
+    color: #fff;
+    text-shadow: 0 0 10px rgba(3, 150, 255, 0.8);
+    animation: flutuar 2s ease-in-out infinite;
+}
+
+@keyframes ondular {
+
+    0%,
+    100% {
+        transform: translateY(0px) scaleY(1.5);
+    }
+
+    50% {
+        transform: translateY(0px) scaleY(1);
+    }
+}
+
+@keyframes flutuar {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1.2);
+    }
+
+    50% {
+        transform: translateY(-5px) scale(1.3);
+    }
 }

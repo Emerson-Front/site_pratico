@@ -111,6 +111,7 @@
     transform: translateY(-5px);
 }
 
+
 .page-pdf .previa-cartao {
     position: relative;
     aspect-ratio: 4/3;
@@ -216,13 +217,149 @@
     }
 }
 
-/* Resto do CSS existente */
+/* Área de Edição */
 .page-pdf .pdf-edit {
-    display: flex;
-    align-items: end;
-    justify-content: end;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
 }
 
+/* Painel Editor */
+.page-pdf .editor-html {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Abas do Editor */
+.page-pdf .abas-editor {
+    display: flex;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.5rem;
+}
+
+.page-pdf .aba {
+    padding: 0.75rem 1.25rem;
+    border: none;
+    background: none;
+    color: #94a3b8;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.page-pdf .aba.ativa {
+    background: white;
+    color: #2563eb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.page-pdf .aba i {
+    font-size: 1.1rem;
+}
+
+/* Campos de Código */
+.page-pdf .campo-codigo {
+    display: none;
+    padding: 24px;
+}
+
+.page-pdf .campo-codigo.ativo {
+    display: block;
+}
+
+.page-pdf .codigo-html,
+.page-pdf .codigo-css {
+    width: 100%;
+    height: 400px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+/* Ações do Editor */
+.page-pdf .acoes-editor {
+    padding: 24px;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Painel Prévia */
+.page-pdf .painel-previa {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.page-pdf .cabecalho-previa {
+    padding: 1rem 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.page-pdf .cabecalho-previa h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+/* Preview */
+.page-pdf #preview {
+    width: 100%;
+    height: 500px;
+    border: none;
+    background: white;
+}
+
+/* Botão Visualizar */
+.page-pdf .btn-pdf {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.page-pdf .btn-pdf:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .page-pdf .pdf-edit {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-pdf .pdf-edit {
+        gap: 16px;
+    }
+
+    .page-pdf .codigo-html,
+    .page-pdf .codigo-css {
+        height: 300px;
+    }
+}
+
+/* Resto do CSS existente */
 .page-pdf .uploud-imgens .bi-plus-circle {
     font-size: 40px;
     cursor: pointer;
@@ -297,52 +434,65 @@
 }
 
 /* editor HTML | CSS*/
-.page-pdf .editor-html,
-.page-pdf .codigo-css,
-.page-pdf .codigo-html {
-    min-width: 700px;
-    max-width: 700px;
-    overflow-y: hidden;
-}
-
 .page-pdf #css,
-.page-pdf #html {
-    color: white;
-    background: #333131;
+.page-pdf #html,
+.page-pdf #completo {
+    color: #666;
+    background: transparent;
     cursor: pointer;
-    border-bottom: 1px solid yellow;
-    border-radius: 4px;
-    margin-bottom: 0px;
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 0;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    position: relative;
 }
 
-.page-pdf .codigo-css,
-.page-pdf .codigo-html {
-    display: block;
-    background: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    height: 294px;
+.page-pdf #css:hover,
+.page-pdf #html:hover,
+.page-pdf #completo:hover {
+    color: #2575fc;
+    background: rgba(37, 117, 252, 0.1);
+}
+
+.page-pdf #css.ativa,
+.page-pdf #html.ativa,
+.page-pdf #completo.ativa {
+    color: #2575fc;
+    background: rgba(37, 117, 252, 0.1);
+}
+
+.page-pdf #css.ativa::after,
+.page-pdf #html.ativa::after,
+.page-pdf #completo.ativa::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #2575fc;
+}
+
+.page-pdf .codigo-completo {
+    width: 100%;
+    height: 400px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
     resize: vertical;
-    outline: 0;
-    overflow: auto;
+    background: #f8fafc;
 }
 
-/* Preview --> */
-.page-pdf #preview {
-    text-align: initial;
-    width: 237mm;
-    height: 338mm;
-    border: 1px solid #000;
-    padding: 0mm;
-    background-color: white;
-    overflow: auto;
-    box-shadow: 7px 8px 10px rgba(0, 0, 0, 0.5);
-    scale: 0.5;
-    line-height: 40px;
-    margin: -261px -212px;
+.page-pdf .codigo-completo:focus {
+    outline: none;
+    border-color: #2575fc;
+    box-shadow: 0 0 0 2px rgba(37, 117, 252, 0.1);
 }
-
-/* <-- Preview */
 
 .page-pdf .btn-pdf {
     background: linear-gradient(135deg, #6a11cb, #2575fc);
@@ -362,19 +512,6 @@
     background: linear-gradient(135deg, #2575fc, #6a11cb);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
-}
-
-.page-pdf section.add-arquivo {
-    margin-top: 60px;
-}
-
-.page-pdf section.add-arquivo label {
-    font-size: 20px;
-}
-
-.page-pdf .btn-outline-secondary {
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    color: white;
 }
 
 @media screen and (max-width: 1150px) {

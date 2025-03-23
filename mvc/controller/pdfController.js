@@ -2,36 +2,39 @@ import MainView from "../view/mainView.js";
 import PdfModel from "../model/pdfModel.js";
 
 export default class pdfController {
+    constructor() {
+        this.contador = 0;
+        this.urlMapping = {};
+        this.pdfModel = new PdfModel();
+    }
 
     async index() {
-
         const mainView = new MainView();
         await mainView.render();
 
+        this.inicializarUploadImagens();
+        this.inicializarDragAndDrop();
+        this.inicializarEditor();
+    }
 
-        // Eventos de deslize da aba css e html
-        $("#css").on("click", function () {
-            $('.codigo-css').toggle(300);
-        });
-        $("#html").on("click", function () {
-            $('.codigo-html').toggle(300);
-        });
-
-        // Placeholder para o editor css
+    inicializarEditor() {
+        // Configuração inicial
         $(".codigo-css").attr("placeholder", "h1{\n    color: red;\n    text-align: center;\n}");
 
+        // Elementos do DOM
+        const elementos = {
+            abas: document.querySelectorAll('.aba'),
+            camposCodigo: document.querySelectorAll('.campo-codigo'),
+            codigoHtml: document.querySelector('.codigo-html'),
+            codigoCss: document.querySelector('.codigo-css'),
+            codigoCompleto: document.querySelector('.codigo-completo')
+        };
 
-        // Atualizar o preview
-        $('.codigo-css, .codigo-html').on('input', function () {
-            const css = "<style>" + $('.codigo-css').val() + "</style>";
-            let html = $('.codigo-html').val();
-
+        // Funções auxiliares
+        const atualizarPrevia = (html, css) => {
             const container = $('<div>').html(html);
             const imgs = container.find('img');
-
-            const pdfModel = new PdfModel();
-            pdfModel.verificaImagem(imgs, urlMapping); // Garanta que urlMapping está definido!
-
+            this.pdfModel.verificaImagem(imgs, this.urlMapping);
             html = container.html();
 
             const iframe = $('#preview')[0];
@@ -39,48 +42,99 @@ export default class pdfController {
             iframeDoc.open();
             iframeDoc.write(css + html);
             iframeDoc.close();
+        };
+
+        const atualizarCodigoCompleto = () => {
+            const html = elementos.codigoHtml.value;
+            const css = elementos.codigoCss.value;
+            elementos.codigoCompleto.value = `<style>\n${css}\n</style>\n\n${html}`;
+            atualizarPrevia(html, "<style>" + css + "</style>");
+        };
+
+        // Event Listeners
+        this.configurarAbas(elementos, atualizarCodigoCompleto);
+        this.configurarInputs(elementos, atualizarCodigoCompleto, atualizarPrevia);
+        this.configurarBotaoPDF(elementos);
+    }
+
+    configurarAbas(elementos, atualizarCodigoCompleto) {
+        elementos.abas.forEach(aba => {
+            aba.addEventListener('click', () => {
+                elementos.abas.forEach(a => a.classList.remove('ativa'));
+                elementos.camposCodigo.forEach(campo => campo.classList.remove('ativo'));
+
+                aba.classList.add('ativa');
+                const campoId = `editor-${aba.id}`;
+                document.getElementById(campoId).classList.add('ativo');
+
+                if (aba.id === 'completo') {
+                    atualizarCodigoCompleto();
+                }
+            });
         });
+    }
 
+    configurarInputs(elementos, atualizarCodigoCompleto, atualizarPrevia) {
+        elementos.codigoHtml.addEventListener('input', atualizarCodigoCompleto);
+        elementos.codigoCss.addEventListener('input', atualizarCodigoCompleto);
 
-        // Botão para gerar o PDF
-        $('.btn-pdf').on('click', function () {
-            const css = "<style>" + $('.codigo-css').val() + "</style>";
-            let html = $('.codigo-html').val();
+        elementos.codigoCompleto.addEventListener('input', () => {
+            const codigo = elementos.codigoCompleto.value;
+            const styleMatch = codigo.match(/<style>([\s\S]*?)<\/style>/);
+            const htmlMatch = codigo.split(/<\/style>/)[1];
+
+            if (styleMatch) {
+                elementos.codigoCss.value = styleMatch[1].trim();
+            }
+
+            if (htmlMatch) {
+                elementos.codigoHtml.value = htmlMatch.trim();
+            }
+
+            atualizarPrevia(htmlMatch.trim(), "<style>" + (styleMatch ? styleMatch[1].trim() : "") + "</style>");
+        });
+    }
+
+    configurarBotaoPDF(elementos) {
+        $('.btn-pdf').on('click', () => {
+            const css = "<style>" + elementos.codigoCss.value + "</style>";
+            let html = elementos.codigoHtml.value;
 
             const container = $('<div>').html(html);
             const imgs = container.find('img');
-
-            const pdfModel = new PdfModel();
-            pdfModel.verificaImagem(imgs, urlMapping); // Garanta que urlMapping está definido!
-
+            this.pdfModel.verificaImagem(imgs, this.urlMapping);
             html = container.html();
-            pdfModel.gerarPdf(css, html);
+
+            this.pdfModel.gerarPdf(css, html);
         });
-
-
-        // Upload de imagens
-        let contador = 0;
-        let urlMapping = {};
-        this.upload_imagens(contador, urlMapping);
-        this.arrastar_e_soltar(contador, urlMapping);
-
     }
 
-
-    // Upload de imagens com input
-    upload_imagens(contador, urlMapping) {
-        document.getElementById('upload-img').addEventListener('change', function () {
-            const file = this.files[0];
+    inicializarUploadImagens() {
+        document.getElementById('upload-img').addEventListener('change', (e) => {
+            const file = e.target.files[0];
             if (!file || !file.type.startsWith('image/')) return;
 
-            const reader = new FileReader();
-            const div_pai = document.querySelector('.grade-imagens');
-            const imgId = `img-${contador}`;
-            contador++; // Incrementa o contador usando referência
+            this.criarCartaoImagem(file);
+        });
+    }
 
-            const cartao = document.createElement('div');
-            cartao.classList.add('cartao-imagem');
-            cartao.innerHTML = `
+    criarCartaoImagem(file) {
+        const reader = new FileReader();
+        const div_pai = document.querySelector('.grade-imagens');
+        const imgId = `img-${this.contador}`;
+        this.contador++;
+
+        const cartao = document.createElement('div');
+        cartao.classList.add('cartao-imagem');
+        cartao.innerHTML = this.getTemplateCartaoImagem(imgId);
+        div_pai.appendChild(cartao);
+
+        this.configurarBotoesCartao(cartao, imgId);
+        this.carregarImagem(reader, file, imgId);
+    }
+
+    getTemplateCartaoImagem(imgId) {
+        return `
             <div class="previa-cartao">
                 <img id="${imgId}">
                 <div class="sobreposicao-cartao">
@@ -95,31 +149,35 @@ export default class pdfController {
                 </div>
             </div>
         `;
-            div_pai.appendChild(cartao);
-
-            // Configurar eventos de cópia e exclusão
-            cartao.querySelector('.botao-copiar').onclick = () => {
-                navigator.clipboard.writeText(imgId);
-                $(cartao).find('.botao-copiar').html('<i class="bi bi-check-circle"></i>').css('background-color', 'green');
-                setTimeout(() => {
-                    $(cartao).find('.botao-copiar').html('<i class="bi bi-link-45deg"></i>').css('background-color', '');
-                }, 2000);
-            };
-
-            cartao.querySelector('.botao-excluir').onclick = () => cartao.remove();
-
-            // Carregar imagem e mapear URL
-            reader.onload = () => {
-                const base64 = reader.result;
-                document.getElementById(imgId).src = base64;
-                urlMapping[imgId] = base64;
-            };
-            reader.readAsDataURL(file);
-        });
     }
 
-    // Eventos de drag and drop
-    arrastar_e_soltar(contador, urlMapping) {
+    configurarBotoesCartao(cartao, imgId) {
+        cartao.querySelector('.botao-copiar').onclick = () => {
+            navigator.clipboard.writeText(imgId);
+            $(cartao).find('.botao-copiar')
+                .html('<i class="bi bi-check-circle"></i>')
+                .css('background-color', 'green');
+
+            setTimeout(() => {
+                $(cartao).find('.botao-copiar')
+                    .html('<i class="bi bi-link-45deg"></i>')
+                    .css('background-color', '');
+            }, 2000);
+        };
+
+        cartao.querySelector('.botao-excluir').onclick = () => cartao.remove();
+    }
+
+    carregarImagem(reader, file, imgId) {
+        reader.onload = () => {
+            const base64 = reader.result;
+            document.getElementById(imgId).src = base64;
+            this.urlMapping[imgId] = base64;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    inicializarDragAndDrop() {
         const area_upload = document.querySelector('.area-upload');
 
         // Prevenir comportamentos padrão
@@ -129,29 +187,27 @@ export default class pdfController {
                 e.stopPropagation();
             });
         });
-        // Efeito visual ao arrastar
+
+        // Efeitos visuais
         ['dragenter', 'dragover'].forEach(evento => {
             area_upload.addEventListener(evento, () => area_upload.classList.add('highlight'));
         });
-        
+
         ['dragleave', 'drop'].forEach(evento => {
             area_upload.addEventListener(evento, () => area_upload.classList.remove('highlight'));
         });
 
-        // Ao soltar arquivo
+        // Manipulação do drop
         area_upload.addEventListener('drop', e => {
             const files = e.dataTransfer.files;
-            const input = document.getElementById('upload-img');
-
             if (files.length > 0) {
                 const file = files[0];
                 if (file.type.startsWith('image/')) {
-                    // Atualizar o input e disparar o evento 'change'
+                    const input = document.getElementById('upload-img');
                     const dataTransfer = new DataTransfer();
                     dataTransfer.items.add(file);
                     input.files = dataTransfer.files;
-                    const event = new Event('change');
-                    input.dispatchEvent(event);
+                    input.dispatchEvent(new Event('change'));
                 } else {
                     alert('Por favor, solte apenas arquivos de imagem.');
                 }

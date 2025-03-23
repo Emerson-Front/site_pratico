@@ -20,46 +20,58 @@
 
             <div class="grade-imagens">
                 <!-- Cartão de Imagem -->
-
-
-
-
             </div>
+
         </section>
 
-        <div class="pdf-edit">
-
-            <!-- Preview -->
-            <iframe id="preview"></iframe>
-
-            <!-- editor HTML -->
+        <!-- Área de Edição Principal -->
+        <section class="pdf-edit">
+            <!-- Painel Esquerdo - Editor -->
             <div class="editor-html">
-                <form class="mode" method="post" target="__blank">
-
-                    <p id="css">Código CSS</p>
-                    <textarea class="codigo-css" name="css" placeholder=""></textarea>
-
-                    <p id="html">Código HTML</p>
-                    <textarea class="codigo-html" name="html" placeholder="<h1>Olá Mundo!</h1>"></textarea>
-
-                    <button type="button" class="btn-pdf" name="btn-pdf">Visualizar</button>
-
-                </form>
-            </div>
-        </div>
-
-        <section class="add-arquivo">
-
-            <form method="post" enctype="multipart/form-data" target="__blank">
-                <label>Adicione seu arquivo Word (formatos .doc ou .docx)</label>
-                <div class="input-group">
-                    <input type="file" name="arquivo-word" class="form-control" id="inputGroupFile04"
-                        aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept=".doc,.docx" required>
-                    <button class="btn btn-outline-secondary" name="btn-pdf3" type="submit"
-                        id="inputGroupFileAddon04">Enviar</button>
+                <div class="abas-editor">
+                    <button class="aba ativa" id="html">
+                        <i class="bi bi-code-slash"></i>
+                        HTML
+                    </button>
+                    <button class="aba" id="css">
+                        <i class="bi bi-braces"></i>
+                        CSS
+                    </button>
+                    <button class="aba" id="completo">
+                        <i class="bi bi-file-earmark-code"></i>
+                        HTML/CSS
+                    </button>
                 </div>
-            </form>
 
+                <div class="conteudo-editor">
+                    <div class="campo-codigo ativo" id="editor-html">
+                        <textarea class="codigo-html" name="html"
+                            placeholder="Digite seu código HTML aqui..."></textarea>
+                    </div>
+                    <div class="campo-codigo" id="editor-css">
+                        <textarea class="codigo-css" name="css" placeholder="Digite seu código CSS aqui..."></textarea>
+                    </div>
+                    <div class="campo-codigo" id="editor-completo">
+                        <textarea class="codigo-completo" name="completo"
+                            placeholder="Seu código HTML e CSS combinados aparecerá aqui..."></textarea>
+                    </div>
+                </div>
+
+                <div class="acoes-editor">
+                    <button class="btn-pdf">
+                        <i class="bi bi-eye"></i>
+                        Visualizar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Painel Direito - Prévia -->
+            <div class="painel-previa">
+                <div class="cabecalho-previa">
+                    <h3>Prévia do PDF</h3>
+                </div>
+                <iframe id="preview"></iframe>
+            </div>
         </section>
 
     </div> <!-- Centralizar -->
