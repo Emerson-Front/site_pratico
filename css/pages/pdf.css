@@ -1,0 +1,545 @@
+.page-pdf {
+    padding: 50px 0;
+    text-align: center;
+    background: linear-gradient(135deg, rgb(224, 224, 224), rgb(249, 249, 249));
+    font-family: "Raleway", sans-serif;
+}
+
+/* Galeria de Imagens */
+.page-pdf .galeria-imagens {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.page-pdf .cabecalho-galeria {
+    padding: 20px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.page-pdf .titulo-galeria {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.page-pdf .titulo-galeria i {
+    font-size: 24px;
+    color: #6a11cb;
+}
+
+.page-pdf .titulo-galeria h4 {
+    color: #333;
+    font-size: 20px;
+}
+
+.page-pdf .acoes-galeria {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.page-pdf .area-upload {
+    flex: 2;
+    min-width: 300px;
+    min-height: 110px;
+    padding: 15px;
+    background: #f8f9fa;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.page-pdf .area-upload.highlight {
+    border-color: #6a11cb;
+    background: #f0f0f0;
+}
+
+.page-pdf .area-upload:hover {
+    border-color: #6a11cb;
+    background: #f0f0f0;
+}
+
+.page-pdf .area-upload i {
+    font-size: 24px;
+    color: #6a11cb;
+}
+
+.page-pdf .area-upload span {
+    font-size: 14px;
+    color: #666;
+}
+
+.page-pdf .area-upload small {
+    font-size: 12px;
+    color: #999;
+}
+
+/* Grade de Imagens */
+.page-pdf .grade-imagens {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.page-pdf .cartao-imagem {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    width: 250px;
+    height: 200px;
+}
+
+.page-pdf .cartao-imagem:hover {
+    transform: translateY(-5px);
+}
+
+
+.page-pdf .previa-cartao {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+
+.page-pdf .previa-cartao img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.page-pdf .sobreposicao-cartao {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.page-pdf .cartao-imagem:hover .sobreposicao-cartao {
+    opacity: 1;
+}
+
+.page-pdf .ferramentas-cartao {
+    display: flex;
+    gap: 15px;
+}
+
+.page-pdf .botao-ferramenta {
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.page-pdf .botao-ferramenta:hover {
+    transform: scale(1.1);
+}
+
+.page-pdf .botao-copiar:hover {
+    background: #0d6efd;
+    color: white;
+}
+
+.page-pdf .botao-excluir:hover {
+    background: #dc3545;
+    color: white;
+}
+
+.page-pdf .info-cartao {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+}
+
+.page-pdf .nome-arquivo {
+    font-size: 12px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.page-pdf .tamanho-arquivo {
+    font-size: 11px;
+    color: #666;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .page-pdf .acoes-galeria {
+        flex-direction: column;
+    }
+
+    .page-pdf .campo-busca,
+    .page-pdf .area-upload {
+        width: 100%;
+    }
+
+    .page-pdf .grade-imagens {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .page-pdf .botao-ferramenta {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Área de Edição */
+.page-pdf .pdf-edit {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+/* Painel Editor */
+.page-pdf .editor-html {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Abas do Editor */
+.page-pdf .abas-editor {
+    display: flex;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.5rem;
+}
+
+.page-pdf .aba {
+    padding: 0.75rem 1.25rem;
+    border: none;
+    background: none;
+    color: #94a3b8;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.page-pdf .aba.ativa {
+    background: white;
+    color: #2563eb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.page-pdf .aba i {
+    font-size: 1.1rem;
+}
+
+/* Campos de Código */
+.page-pdf .campo-codigo {
+    display: none;
+    padding: 24px;
+}
+
+.page-pdf .campo-codigo.ativo {
+    display: block;
+}
+
+.page-pdf .codigo-html,
+.page-pdf .codigo-css {
+    width: 100%;
+    height: 400px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+/* Ações do Editor */
+.page-pdf .acoes-editor {
+    padding: 24px;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Painel Prévia */
+.page-pdf .painel-previa {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.page-pdf .cabecalho-previa {
+    padding: 1rem 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.page-pdf .cabecalho-previa h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+/* Preview */
+.page-pdf #preview {
+    width: 100%;
+    height: 500px;
+    border: none;
+    background: white;
+}
+
+/* Botão Visualizar */
+.page-pdf .btn-pdf {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.page-pdf .btn-pdf:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .page-pdf .pdf-edit {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-pdf .pdf-edit {
+        gap: 16px;
+    }
+
+    .page-pdf .codigo-html,
+    .page-pdf .codigo-css {
+        height: 300px;
+    }
+}
+
+/* Resto do CSS existente */
+.page-pdf .uploud-imgens .bi-plus-circle {
+    font-size: 40px;
+    cursor: pointer;
+    box-shadow: 0 0 100px rgba(0, 0, 0, );
+    border-radius: 50%;
+    padding: 0 3px;
+    transition: 0.3s;
+}
+
+.page-pdf .uploud-imgens .bi-plus-circle:hover {
+    background: #353535;
+    color: white;
+}
+
+.page-pdf .uploud-imgens span {
+    color: #353535;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.page-pdf .mini-imagens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 2px 0;
+    justify-content: center;
+}
+
+.page-pdf .mini-img {
+    position: relative;
+}
+
+.page-pdf .mini-img img {
+    max-width: 150px;
+    height: 100px;
+    transition: 0.3s;
+}
+
+.page-pdf .mini-img img:hover {
+    scale: 1.05;
+    box-shadow: 0 0 10px rgb(0, 57, 95);
+    opacity: 0.8;
+}
+
+.page-pdf .mini-img .bi-copy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    z-index: 10;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    margin: auto;
+}
+
+.page-pdf .mini-img .bi-copy:hover {
+    scale: 1.05;
+}
+
+.page-pdf .mini-img .bi-trash {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    color: red;
+}
+
+.page-pdf .mini-img .bi-trash:hover {
+    scale: 1.05;
+}
+
+/* editor HTML | CSS*/
+.page-pdf #css,
+.page-pdf #html,
+.page-pdf #completo {
+    color: #666;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 0;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.page-pdf #css:hover,
+.page-pdf #html:hover,
+.page-pdf #completo:hover {
+    color: #2575fc;
+    background: rgba(37, 117, 252, 0.1);
+}
+
+.page-pdf #css.ativa,
+.page-pdf #html.ativa,
+.page-pdf #completo.ativa {
+    color: #2575fc;
+    background: rgba(37, 117, 252, 0.1);
+}
+
+.page-pdf #css.ativa::after,
+.page-pdf #html.ativa::after,
+.page-pdf #completo.ativa::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #2575fc;
+}
+
+.page-pdf .codigo-completo {
+    width: 100%;
+    height: 400px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    resize: vertical;
+    background: #f8fafc;
+}
+
+.page-pdf .codigo-completo:focus {
+    outline: none;
+    border-color: #2575fc;
+    box-shadow: 0 0 0 2px rgba(37, 117, 252, 0.1);
+}
+
+.page-pdf .btn-pdf {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    margin-top: 10px;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.page-pdf .btn-pdf:hover,
+.page-pdf .btn-outline-secondary:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+@media screen and (max-width: 1150px) {
+    .page-pdf .pdf-edit {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 70px;
+    }
+
+    .page-pdf #preview {
+        margin-top: -350px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .page-pdf #preview {
+        scale: 0.3;
+        margin: -490px 0 -440px 0;
+    }
+
+    .page-pdf .ql-editor {
+        width: 100%;
+    }
+
+    .page-pdf .editor-html,
+    .page-pdf .codigo-css,
+    .page-pdf .codigo-html {
+        min-width: 0;
+        width: 99%;
+    }
+}

@@ -1,0 +1,78 @@
+<div class="page-pdf">
+
+    <div class="centralizar">
+
+        <!-- Galeria de Imagens -->
+        <section class="galeria-imagens">
+            <div class="cabecalho-galeria">
+                <div class="titulo-galeria">
+                    <i class="bi bi-images"></i>
+                    <h4>Biblioteca de Imagens para seu PDF</h4>
+                </div>
+                <div class="acoes-galeria">
+                    <label class="area-upload" for="upload-img">
+                        <i class="bi bi-cloud-upload"></i>
+                        <span>Arraste ou clique para fazer upload</span>
+                    </label>
+                    <input type="file" id="upload-img" accept="image/*" multiple hidden>
+                </div>
+            </div>
+
+            <div class="grade-imagens">
+                <!-- Cartão de Imagem -->
+            </div>
+
+        </section>
+
+        <!-- Área de Edição Principal -->
+        <section class="pdf-edit">
+            <!-- Painel Esquerdo - Editor -->
+            <div class="editor-html">
+                <div class="abas-editor">
+                    <button class="aba ativa" id="html">
+                        <i class="bi bi-code-slash"></i>
+                        HTML
+                    </button>
+                    <button class="aba" id="css">
+                        <i class="bi bi-braces"></i>
+                        CSS
+                    </button>
+                    <button class="aba" id="completo">
+                        <i class="bi bi-file-earmark-code"></i>
+                        HTML/CSS
+                    </button>
+                </div>
+
+                <div class="conteudo-editor">
+                    <div class="campo-codigo ativo" id="editor-html">
+                        <textarea class="codigo-html" name="html"
+                            placeholder="Digite seu código HTML aqui..."></textarea>
+                    </div>
+                    <div class="campo-codigo" id="editor-css">
+                        <textarea class="codigo-css" name="css" placeholder="Digite seu código CSS aqui..."></textarea>
+                    </div>
+                    <div class="campo-codigo" id="editor-completo">
+                        <textarea class="codigo-completo" name="completo"
+                            placeholder="Seu código HTML e CSS combinados aparecerá aqui..."></textarea>
+                    </div>
+                </div>
+
+                <div class="acoes-editor">
+                    <button class="btn-pdf">
+                        <i class="bi bi-eye"></i>
+                        Visualizar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Painel Direito - Prévia -->
+            <div class="painel-previa">
+                <div class="cabecalho-previa">
+                    <h3>Prévia do PDF</h3>
+                </div>
+                <iframe id="preview"></iframe>
+            </div>
+        </section>
+
+    </div> <!-- Centralizar -->
+</div> <!-- page-pdf -->

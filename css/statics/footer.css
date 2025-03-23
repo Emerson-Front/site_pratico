@@ -1,0 +1,108 @@
+footer {
+    background-color: rgb(26, 26, 26);
+    padding: 50px 0;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    font-weight: 300;
+    font-family: "Raleway", sans-serif;
+}
+
+
+
+footer .linha {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+footer .coluna {
+    flex: 1;
+    min-width: 250px;
+    margin: 20px;
+}
+
+footer h3 {
+    color: #00ffe7;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+footer p {
+    line-height: 1.6;
+    color: #b3b3b3;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    color: #b3b3b3;
+}
+
+footer ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer .social-icons {
+    font-size: 24px;
+}
+
+footer .social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+footer .social-icons a:hover {
+    transform: scale(1.2);
+}
+
+footer p {
+    color: #969696;
+    font-size: 15px;
+}
+
+/* Efeito de brilho animado */
+footer .glow-effect {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 255, 231, 0.4) 0%, rgba(0, 255, 231, 0) 70%);
+}
+
+footer .pulse-1 {
+    top: -100px;
+    left: -100px;
+    animation: pulse 6s infinite;
+    z-index: 0;
+}
+
+footer .pulse-2 {
+    bottom: -100px;
+    right: -100px;
+    animation: pulse 6s infinite 3s;
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.8);
+        opacity: 0.7;
+    }
+}
