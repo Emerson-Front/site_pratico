@@ -55,7 +55,7 @@
 }
 
 /* Seção de cartões */
-#section-cartao {
+.page-conversor #section-cartao {
     max-width: 1200px;
     margin: 3rem auto;
     display: grid;
@@ -64,7 +64,7 @@
     padding: 1rem;
 }
 
-.cartao {
+.page-conversor .cartao {
     background: var(--card-bg);
     border: 2px solid var(--secondary);
     border-radius: 5px;
@@ -77,25 +77,26 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    animation: fadeInUp 0.6s ease forwards;
 }
 
-.cartao::before {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: -100%;
-    width: 300%;
-    height: 300%;
-    background: linear-gradient(45deg, transparent, rgba(5, 217, 232, 0.2), transparent);
-    transition: all 0.5s ease;
+.page-conversor .cartao:nth-child(1) {
+    animation-delay: 0.1s;
 }
 
-.cartao:hover::before {
-    top: -50%;
-    left: -50%;
+.page-conversor .cartao:nth-child(2) {
+    animation-delay: 0.2s;
 }
 
-.cartao img {
+.page-conversor .cartao:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.page-conversor .cartao:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.page-conversor .cartao img {
     width: 70px;
     height: 70px;
     object-fit: contain;
@@ -103,12 +104,12 @@
     transition: all 0.3s ease;
 }
 
-.cartao:hover img {
+.page-conversor .cartao:hover img {
     transform: scale(1.1);
     filter: drop-shadow(0 0 10px var(--secondary));
 }
 
-.cartao p {
+.page-conversor .cartao p {
     font-size: 1.2rem;
     font-weight: 500;
     color: var(--text);
@@ -119,7 +120,7 @@
 }
 
 /* Seção do conversor */
-#section-conversor {
+.page-conversor #section-conversor {
     max-width: 900px;
     margin: 3rem auto;
     background: var(--card-bg);
@@ -129,7 +130,7 @@
     position: relative;
 }
 
-#section-conversor::before {
+.page-conversor #section-conversor::before {
     content: '';
     position: absolute;
     top: 0;
@@ -143,7 +144,7 @@
     pointer-events: none;
 }
 
-#section-conversor h3 {
+.page-conversor #section-conversor h3 {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 2.5rem;
@@ -152,7 +153,7 @@
     letter-spacing: 2px;
 }
 
-.box {
+.page-conversor .box {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,14 +161,14 @@
     flex-wrap: wrap;
 }
 
-.parte {
+.page-conversor .parte {
     flex: 1;
     min-width: 280px;
 }
 
 /* Inputs e Selects estilizados */
-input,
-select {
+.page-conversor input,
+.page-conversor select {
     width: 100%;
     padding: 1rem;
     background: rgba(15, 25, 35, 0.8);
@@ -179,14 +180,14 @@ select {
     transition: all 0.3s ease;
 }
 
-input:focus,
-select:focus {
+.page-conversor input:focus,
+.page-conversor select:focus {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 15px rgba(255, 42, 109, 0.3);
 }
 
-select {
+.page-conversor select {
     cursor: pointer;
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2305d9e8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
@@ -196,10 +197,11 @@ select {
 }
 
 /* Cartão selecionado */
-.card-selected {
+.page-conversor .card-selected {
     background: rgba(255, 42, 109, 0.1);
     border-color: var(--primary);
     box-shadow: 0 0 20px rgba(255, 42, 109, 0.2);
+    animation: softPulse 2s infinite;
 }
 
 /* Animações */
@@ -229,7 +231,7 @@ select {
     }
 }
 
-.cartao:hover p {
+.page-conversor .cartao:hover p {
     animation: none;
 }
 
@@ -245,45 +247,45 @@ select {
     }
 }
 
-.cartao {
+.page-conversor .cartao {
     animation: fadeInUp 0.6s ease forwards;
 }
 
-.cartao:nth-child(1) {
-    animation-delay: 0.1s;
+.page-conversor .cartao::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(45deg, transparent, rgba(5, 217, 232, 0.2), transparent);
+    transition: all 0.5s ease;
 }
 
-.cartao:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.cartao:nth-child(3) {
-    animation-delay: 0.3s;
-}
-
-.cartao:nth-child(4) {
-    animation-delay: 0.4s;
+.page-conversor .cartao:hover::before {
+    top: -50%;
+    left: -50%;
 }
 
 /* Efeitos de hover refinados */
-input:hover,
-select:hover {
+.page-conversor input:hover,
+.page-conversor select:hover {
     background: #2f3f50;
 }
 
 /* Estilo para placeholder */
-input::placeholder {
+.page-conversor input::placeholder {
     color: rgba(209, 247, 255, 0.5);
 }
 
 /* Estilo para opções do select */
-select option {
+.page-conversor select option {
     background: var(--bg-color);
     color: var(--text);
 }
 
 /* Feedback visual para valores válidos */
-input:valid {
+.page-conversor input:valid {
     border-color: var(--success);
 }
 
@@ -302,7 +304,7 @@ input:valid {
     }
 }
 
-.card-selected {
+.page-conversor .card-selected {
     animation: softPulse 2s infinite;
 }
 
@@ -316,22 +318,22 @@ input:valid {
         font-size: 2rem;
     }
 
-    #section-conversor {
+    .page-conversor #section-conversor {
         margin: 2rem 1rem;
         padding: 1.5rem;
     }
 
-    .box {
+    .page-conversor .box {
         flex-direction: column;
     }
 
-    .box span {
+    .page-conversor .box span {
         transform: rotate(90deg);
     }
 }
 
 /* Animações específicas para cada cartão */
-#medida {
+.page-conversor #medida {
     position: relative;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -340,7 +342,7 @@ input:valid {
             rgba(255, 42, 109, 0.05) 100%);
 }
 
-#medida::before {
+.page-conversor #medida::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -357,12 +359,12 @@ input:valid {
     transition: opacity 0.3s ease;
 }
 
-#medida:hover::before {
+.page-conversor #medida:hover::before {
     opacity: 1;
     animation: scannerEffect 2s linear infinite;
 }
 
-#medida .grid {
+.page-conversor #medida .grid {
     position: absolute;
     inset: 0;
     background-image:
@@ -385,20 +387,20 @@ input:valid {
     z-index: 1;
 }
 
-#medida:hover .grid {
+.page-conversor #medida:hover .grid {
     opacity: 1;
     animation: gridPulse 2s ease-in-out infinite;
 }
 
-#medida .hologram {
+.page-conversor #medida .hologram {
     position: absolute;
     inset: 0;
     z-index: 2;
     pointer-events: none;
 }
 
-#medida:hover .hologram::before,
-#medida:hover .hologram::after {
+.page-conversor #medida:hover .hologram::before,
+.page-conversor #medida:hover .hologram::after {
     content: '📊';
     position: absolute;
     font-size: 1.5em;
@@ -406,19 +408,19 @@ input:valid {
     filter: drop-shadow(0 0 5px var(--secondary));
 }
 
-#medida:hover .hologram::before {
+.page-conversor #medida:hover .hologram::before {
     left: 20%;
     top: 30%;
     animation: hologramFloat 3s ease-in-out infinite;
 }
 
-#medida:hover .hologram::after {
+.page-conversor #medida:hover .hologram::after {
     right: 20%;
     bottom: 30%;
     animation: hologramFloat 3s ease-in-out infinite 1.5s;
 }
 
-#medida .scan-line {
+.page-conversor #medida .scan-line {
     position: absolute;
     width: 100%;
     height: 2px;
@@ -433,17 +435,17 @@ input:valid {
     z-index: 3;
 }
 
-#medida:hover .scan-line {
+.page-conversor #medida:hover .scan-line {
     opacity: 1;
     animation: scanLine 2s linear infinite;
 }
 
-#medida p {
+.page-conversor #medida p {
     position: relative;
     z-index: 4;
 }
 
-#medida:hover p {
+.page-conversor #medida:hover p {
     animation: glitchText 2s linear infinite;
     color: var(--text);
     text-shadow:
@@ -452,7 +454,7 @@ input:valid {
     letter-spacing: 3px;
 }
 
-#medida:hover {
+.page-conversor #medida:hover {
     transform: translateY(-5px);
     box-shadow:
         0 5px 20px rgba(5, 217, 232, 0.3),
@@ -552,7 +554,7 @@ input:valid {
     }
 }
 
-#temperatura:hover p {
+.page-conversor #temperatura:hover p {
     animation: queimar 1s ease infinite;
     text-shadow:
         0 0 10px #ff4d00,
@@ -567,12 +569,12 @@ input:valid {
     animation: queimar 1s ease infinite, pulsar 0.5s ease-in-out infinite;
 }
 
-#peso p {
+.page-conversor #peso p {
     position: relative;
     transform-origin: center -20px;
 }
 
-#peso:hover p {
+.page-conversor #peso:hover p {
     animation:
         conjunto-pendulo 3s cubic-bezier(0.45, 0, 0.55, 1) infinite,
         pulso-suave 3s ease-in-out infinite;
@@ -586,7 +588,7 @@ input:valid {
     padding-top: 25px;
 }
 
-#peso:hover p::before {
+.page-conversor #peso:hover p::before {
     content: '';
     position: absolute;
     top: -20px;
@@ -707,7 +709,7 @@ input:valid {
     }
 }
 
-.temperatura:hover p::before {
+.page-conversor #temperatura:hover p::before {
     content: '🔥';
     position: absolute;
     left: -25px;
@@ -716,7 +718,7 @@ input:valid {
     transform-origin: bottom;
 }
 
-.temperatura:hover p::after {
+.page-conversor #temperatura:hover p::after {
     content: '🔥';
     position: absolute;
     right: -25px;
@@ -725,8 +727,8 @@ input:valid {
     transform-origin: bottom;
 }
 
-.temperatura:hover p::before,
-.temperatura:hover p::after {
+.page-conversor #temperatura:hover p::before,
+.page-conversor #temperatura:hover p::after {
     font-size: 1.8em;
 }
 
@@ -766,13 +768,13 @@ input:valid {
     }
 }
 
-#volume {
+.page-conversor #volume {
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
-#volume .bolhas {
+.page-conversor #volume .bolhas {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -782,10 +784,10 @@ input:valid {
     pointer-events: none;
 }
 
-#volume .bolhas::before,
-#volume .bolhas::after,
-#volume .bolhas span::before,
-#volume .bolhas span::after {
+.page-conversor #volume .bolhas::before,
+.page-conversor #volume .bolhas::after,
+.page-conversor #volume .bolhas span::before,
+.page-conversor #volume .bolhas span::after {
     content: '';
     position: absolute;
     bottom: -20px;
@@ -795,39 +797,39 @@ input:valid {
     opacity: 0;
 }
 
-#volume:hover .bolhas::before {
+.page-conversor #volume:hover .bolhas::before {
     left: 10%;
     width: 15px;
     height: 15px;
     animation: subir 3s ease-in infinite 0.2s;
 }
 
-#volume:hover .bolhas::after {
+.page-conversor #volume:hover .bolhas::after {
     left: 30%;
     width: 10px;
     height: 10px;
     animation: subir 2.5s ease-in infinite 0.8s;
 }
 
-#volume:hover .bolhas span::before {
+.page-conversor #volume:hover .bolhas span::before {
     left: 50%;
     width: 12px;
     height: 12px;
     animation: subir 2.8s ease-in infinite 0.4s;
 }
 
-#volume:hover .bolhas span::after {
+.page-conversor #volume:hover .bolhas span::after {
     left: 70%;
     width: 8px;
     height: 8px;
     animation: subir 2.2s ease-in infinite 1s;
 }
 
-#volume:hover {
+.page-conversor #volume:hover {
     box-shadow: 0 0 20px rgba(3, 150, 255, 0.3);
 }
 
-#volume::before {
+.page-conversor #volume::before {
     content: '';
     position: absolute;
     bottom: -100%;
@@ -843,12 +845,12 @@ input:valid {
     z-index: 0;
 }
 
-#volume:hover::before {
+.page-conversor #volume:hover::before {
     bottom: 0;
     animation: ondular 2s ease-in-out infinite;
 }
 
-#volume::after {
+.page-conversor #volume::after {
     content: '';
     position: absolute;
     top: 0;
@@ -863,18 +865,18 @@ input:valid {
     transition: all 0.5s ease;
 }
 
-#volume:hover::after {
+.page-conversor #volume:hover::after {
     left: 150%;
     transition: all 0.8s ease;
 }
 
-#volume p {
+.page-conversor #volume p {
     position: relative;
     z-index: 1;
     transition: all 0.3s ease;
 }
 
-#volume:hover p {
+.page-conversor #volume:hover p {
     transform: scale(1.2);
     color: #fff;
     text-shadow: 0 0 10px rgba(3, 150, 255, 0.8);
